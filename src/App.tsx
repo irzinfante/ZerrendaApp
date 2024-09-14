@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import zerrendaAppLogo from '/zerrenda-app.svg'
 import { Button } from '@chakra-ui/react'
 import { FaPlus } from "react-icons/fa6";
 import './App.css'
@@ -11,8 +11,8 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+        <a href="http://localhost:5173" target="_blank" rel="noreferrer">
+          <img src={zerrendaAppLogo} className="logo" alt="ZerrendaApp logo" />
         </a>
         <a href="https://react.dev" target="_blank" rel="noreferrer">
           <img src={reactLogo} className="logo react" alt="React logo" />
