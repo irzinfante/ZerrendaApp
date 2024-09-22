@@ -1,42 +1,79 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+#app-container {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+#logo-container {
+  height: 33vh;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo {
+  font-family: "Carter One", cursive;
+  font-size: 2.5rem;
+  letter-spacing: 4pt;
+  font-weight: 400;
+  margin: 0;
+  color: var(--striped-blue);
+}
+
+#login-section {
+  margin-bottom: 20px;
+}
+
+#login-container {
+  position: relative;
   text-align: center;
-}
+  padding: 20px 40px 30px;
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+  & h5 {
+    margin: 0;
   }
-  to {
-    transform: rotate(360deg);
+
+  & .login-success {
+    color: var(--sage-green);
+    font-size: 0.85rem;
+    font-weight: 600;
+    position: absolute;
+    bottom: 5px;
+  }
+
+  & .login-error {
+    color: var(--terracotta-red);
+    font-size: 0.85rem;
+    font-weight: 600;
+    position: absolute;
+    bottom: 5px;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (min-width: 601px) {
+  #logo {
+    font-size: 3rem;
   }
 }
 
-.card {
-  padding: 2em;
+@media (min-width: 769px) {
+  #logo {
+    font-size: 5rem;
+  }
 }
 
-.read-the-docs {
-  color: #888;
+@media (min-width: 1200px) {
+  #logo {
+    font-size: 7rem;
+  }
 }
