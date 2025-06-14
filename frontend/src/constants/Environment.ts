@@ -1,1 +1,1 @@
-export const GITHUB_TAG: string = import.meta.env.VITE_GITHUB_TAG
+export const GITHUB_TAG = import.meta.env.VITE_GITHUB_TAG as string
