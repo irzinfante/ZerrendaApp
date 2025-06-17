@@ -25,3 +25,9 @@ services:
      - DB_USER=admin
      - DB_PASSWORD=password
     network_mode: "host"
+
+  frontend:
+    container_name: zerrenda-app
+    build: ./frontend
+    restart: unless-stopped
+    network_mode: "host"
