@@ -40,3 +40,6 @@ backend/.idea/
 
 # Environment variables file
 backend/.env
+
+## database
+db/data
