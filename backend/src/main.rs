@@ -6,7 +6,7 @@ mod helpers;
 mod models;
 mod services;
 
-use axum::{Router, middleware};
+use axum::{middleware, routing::get, Router};
 use config::Config;
 use couch_rs::Client;
 use helpers::auth_helpers::enforce_auth;
@@ -23,6 +23,9 @@ async fn main() {
             .expect("Failed to open database"),
     ));
 
+    let health_chek = Router::new()
+        .route("/healthcheck", get(async || -> &'static str { "Running!" }));
+
     let auth_service = Arc::new(AuthService::new(db_client.clone()).await);
 
     let protected_endpoints = Router::new()
@@ -30,6 +33,7 @@ async fn main() {
         .route_layer(middleware::from_fn(enforce_auth));
 
     let app = Router::new()
+        .merge(health_chek)
         .merge(api::auth_api(auth_service.clone()))
         .merge(protected_endpoints);
 
