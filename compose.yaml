@@ -1,0 +1,27 @@
+name: zerrenda-app-local-setup
+
+services:
+  db:
+    container_name: zerrenda-app-db
+    image: couchdb:3.5.0
+    restart: unless-stopped
+    volumes:
+      - ./db/data:/opt/couchdb/data
+      - ./db/local.ini:/opt/couchdb/etc/local.ini
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=password
+    network_mode: "host"
+
+  backend:
+    container_name: zerrenda-app-api
+    build: ./backend
+    depends_on:
+     - db
+    restart: unless-stopped
+    env_file:
+     - backend/.env
+    environment:
+     - DB_USER=admin
+     - DB_PASSWORD=password
+    network_mode: "host"
