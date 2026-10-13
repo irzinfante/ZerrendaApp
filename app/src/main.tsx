@@ -1,10 +1,19 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
+import { ChakraProvider } from "@chakra-ui/react"
 import "./index.css"
+import theme from "./theme"
 import App from "./App"
 
-createRoot(document.getElementById("root") ?? new HTMLDivElement()).render(
+const rootElement = document.getElementById("root")
+if (!rootElement) {
+  throw new Error("Root element #root not found")
+}
+
+createRoot(rootElement).render(
   <StrictMode>
-    <App />
+    <ChakraProvider theme={theme} resetCSS={false} disableGlobalStyle>
+      <App />
+    </ChakraProvider>
   </StrictMode>,
 )

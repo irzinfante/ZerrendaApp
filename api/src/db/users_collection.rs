@@ -1,40 +1,39 @@
-use crate::models::user_model::User;
-use couch_rs::{Client, database::Database, types::find::FindQuery};
-use serde_json::json;
-use std::sync::Arc;
-use tokio::sync::Mutex;
+use crate::{
+    errors::{AppError, ErrorType},
+    models::user_model::User,
+};
+use couch_rs::{Client, database::Database};
 
 pub struct UsersCollection {
-    db: Arc<Mutex<Database>>,
+    db: Database,
 }
 
 impl UsersCollection {
-    pub async fn new(db_client: Arc<Mutex<Client>>) -> Self {
+    pub async fn new(db_client: &Client) -> Self {
         Self {
-            db: Arc::new(Mutex::new(
-                db_client.lock().await.db("users").await.expect("Couldn't obtain 'users' database")
+            db: db_client
+                .db("users")
+                .await
+                .expect("Couldn't obtain 'users' database"),
+        }
+    }
+
+    pub async fn get_user(&self, id: &str) -> Result<Option<User>, AppError> {
+        match self.db.get::<User>(id).await {
+            Ok(user) => Ok(Some(user)),
+            Err(error) if error.is_not_found() => Ok(None),
+            Err(_) => Err(AppError::new(
+                ErrorType::DbError,
+                "Couldn't get user.".to_string(),
             )),
         }
     }
 
-    pub async fn get_user_by_username(&self, username: String) -> Option<User> {
-        let db = self.db.lock().await;
-        let query = FindQuery::new(json!({"username": username }));
-        match db.find::<User>(&query).await {
-            Ok(docs) => {
-                if docs.total_rows > 0 {
-                    docs.rows.first().cloned()
-                } else {
-                    None
-                }
-            }
-            Err(_) => None
-        }
-    }
-
-    pub async fn create_user(&self, user: &mut User) -> bool {
-        let db = self.db.lock().await;
-        let result = db.create(user).await;
-        result.is_ok()
+    pub async fn create_user(&self, user: &mut User) -> Result<(), AppError> {
+        self.db
+            .create(user)
+            .await
+            .map(|_| ())
+            .map_err(|_| AppError::new(ErrorType::DbError, "Couldn't create user.".to_string()))
     }
 }

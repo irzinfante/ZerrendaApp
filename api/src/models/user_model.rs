@@ -1,4 +1,3 @@
-use crate::helpers::util::new_id;
 use couch_rs::CouchDocument;
 use couch_rs::document::TypedCouchDocument;
 use serde::{Deserialize, Serialize};
@@ -11,16 +10,16 @@ pub struct User {
     #[serde(skip_serializing_if = "String::is_empty")]
     _rev: String,
 
-    username: String,
+    email: String,
     password_hash: String,
 }
 
 impl User {
-    pub fn new(username: String, password_hash: String) -> Self {
+    pub fn new(id: String, email: String, password_hash: String) -> Self {
         User {
-            _id: new_id(),
+            _id: id,
             _rev: String::new(),
-            username,
+            email,
             password_hash,
         }
     }
@@ -29,12 +28,8 @@ impl User {
         self._id.clone()
     }
 
-    pub fn get_rev(&self) -> String {
-        self._rev.clone()
-    }
-
-    pub fn get_username(&self) -> String {
-        self.username.clone()
+    pub fn get_email(&self) -> String {
+        self.email.clone()
     }
 
     pub fn get_password_hash(&self) -> String {

@@ -1,16 +1,12 @@
-use crate::{
-    helpers::auth_helpers::{create_session_token, hash_password},
-    models::ApiResponse,
-    services::auth_service::AuthService,
-};
-use axum::{Json, extract::State};
-use base64::{Engine, prelude::BASE64_STANDARD};
+use super::extractors::ApiJson;
+use crate::{models::ApiResponse, services::auth_service::AuthService};
+use axum::extract::State;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 
 #[derive(Deserialize)]
 pub struct RegisterRequest {
-    username: String,
+    email: String,
     password: String,
 }
 
@@ -21,24 +17,17 @@ pub struct RegisterResponse {
 
 pub async fn register(
     State(auth_service): State<Arc<AuthService>>,
-    Json(req): Json<RegisterRequest>,
-) -> Json<ApiResponse<RegisterResponse>> {
-    let password_hash = match hash_password(req.password) {
-        Ok(hash) => hash,
-        Err(error) => return Json(ApiResponse::error(error)),
-    };
-
-    match auth_service.register(req.username, password_hash).await {
-        Ok(session) => Json(ApiResponse::success(RegisterResponse {
-            session_token: BASE64_STANDARD.encode(create_session_token(session)),
-        })),
-        Err(error) => Json(ApiResponse::error(error)),
+    ApiJson(req): ApiJson<RegisterRequest>,
+) -> ApiResponse<RegisterResponse> {
+    match auth_service.register(req.email, req.password).await {
+        Ok(session_token) => ApiResponse::success(RegisterResponse { session_token }),
+        Err(error) => ApiResponse::error(error),
     }
 }
 
 #[derive(Deserialize)]
 pub struct LoginRequest {
-    username: String,
+    email: String,
     password: String,
 }
 
@@ -49,12 +38,10 @@ pub struct LoginResponse {
 
 pub async fn login(
     State(auth_service): State<Arc<AuthService>>,
-    Json(req): Json<LoginRequest>,
-) -> Json<ApiResponse<LoginResponse>> {
-    match auth_service.login(req.username, req.password).await {
-        Ok(session) => Json(ApiResponse::success(LoginResponse {
-            session_token: BASE64_STANDARD.encode(create_session_token(session)),
-        })),
-        Err(error) => Json(ApiResponse::error(error)),
+    ApiJson(req): ApiJson<LoginRequest>,
+) -> ApiResponse<LoginResponse> {
+    match auth_service.login(req.email, req.password).await {
+        Ok(session_token) => ApiResponse::success(LoginResponse { session_token }),
+        Err(error) => ApiResponse::error(error),
     }
 }

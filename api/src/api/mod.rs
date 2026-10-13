@@ -1,5 +1,7 @@
 mod auth_api;
 mod dummy_api;
+mod extractors;
+pub mod middleware;
 
 use crate::services::auth_service::AuthService;
 use axum::{Router, routing::post};

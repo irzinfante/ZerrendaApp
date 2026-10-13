@@ -12,6 +12,8 @@
   --ash-gray: #A8A8A8;
   --terracotta-red: #D65A31;
   --post-it-yellow: #FFEB3B;
+  --white: #FFFFFF;
+  --soft-shadow: rgba(0, 0, 0, 0.1);
 }
 
 .paper-beige {
@@ -96,31 +98,6 @@ a:hover {
   text-decoration: underline;
 }
 
-button, .btn {
-  font-family: "Work Sans", sans-serif;
-  font-weight: 600;
-  background-color: var(--striped-blue);
-  color: white;
-  border: none;
-  padding: 0.5rem 1.5rem;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-button.secondary, .btn.secondary {
-  background-color: var(--sage-green);
-}
-
-button:hover, .btn:hover {
-  filter: brightness(85%);
-}
-
-button[disabled], .btn[disabled] {
-  background-color: var(--ash-gray);
-  filter: brightness(85%);
-  cursor: not-allowed;
-}
-
 .subtitle {
   font-family: "Poppins", sans-serif;
   font-size: 1.1rem;
@@ -134,30 +111,10 @@ button[disabled], .btn[disabled] {
 
 .alert-error {
   background-color: var(--terracotta-red);
-  color: white;
+  color: var(--white);
   padding: 1rem;
   border-radius: 5px;
   margin: 1rem 0;
-}
-
-input, select, textarea {
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 1rem;
-  padding: 0.5rem;
-  background-color: var(--off-white);
-  border: 1px solid var(--ash-gray);
-  border-radius: 10px;
-}
-
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border-color: var(--striped-blue);
-}
-
-label {
-  font-family: "Poppins", sans-serif;
-  font-size: 1rem;
-  color: var(--charcoal-gray);
 }
 
 .section {
@@ -186,7 +143,7 @@ th, td {
 
 th {
   background-color: var(--striped-blue);
-  color: white;
+  color: var(--white);
   font-family: "Work Sans", sans-serif;
   font-weight: 600;
 }

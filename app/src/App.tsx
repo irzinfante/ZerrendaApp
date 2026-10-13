@@ -6,7 +6,7 @@ import useButton from "./hooks/ui/useButton"
 import Footer from "./components/Footer/Footer"
 import "./App.css"
 
-function App() {
+const App = () => {
 
   const [isLoginSuccess, setIsLoginSuccess] = useState<boolean>(false)
   const [isLoginError, setIsLoginError] = useState<boolean>(false)

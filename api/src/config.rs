@@ -1,8 +1,6 @@
 use dotenv::dotenv;
-use serde::Deserialize;
 use std::env;
 
-#[derive(Debug, Deserialize)]
 pub struct Config {
     pub app_host: String,
     pub app_port: u16,
@@ -10,6 +8,7 @@ pub struct Config {
     pub db_user: String,
     pub db_password: String,
     pub auth_private_key: String,
+    pub cors_allowed_origins: Vec<String>,
 }
 
 impl Config {
@@ -28,6 +27,13 @@ impl Config {
             db_password: env::var("DB_PASSWORD").expect("DB_PASSWORD is required"),
 
             auth_private_key: env::var("AUTH_PRIVATE_KEY").expect("AUTH_PRIVATE_KEY is required"),
+
+            cors_allowed_origins: env::var("CORS_ALLOWED_ORIGINS")
+                .expect("CORS_ALLOWED_ORIGINS is required")
+                .split(',')
+                .map(|origin| origin.trim().to_string())
+                .filter(|origin| !origin.is_empty())
+                .collect(),
         }
     }
 }
