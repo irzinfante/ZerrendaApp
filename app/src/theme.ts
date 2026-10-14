@@ -14,7 +14,7 @@ const theme = extendTheme({
         border: "none",
         borderRadius: "10px",
         color: "var(--white)",
-        _hover: { filter: "brightness(85%)" },
+        _hover: { filter: "brightness(115%)" },
         _disabled: {
           bg: "var(--ash-gray)",
           filter: "brightness(85%)",
@@ -28,11 +28,11 @@ const theme = extendTheme({
       variants: {
         primary: {
           bg: "var(--striped-blue)",
-          _hover: { _disabled: { bg: "var(--ash-gray)" } },
+          _hover: { _disabled: { bg: "var(--ash-gray)", filter: "brightness(85%)" } },
         },
         secondary: {
           bg: "var(--sage-green)",
-          _hover: { _disabled: { bg: "var(--ash-gray)" } },
+          _hover: { _disabled: { bg: "var(--ash-gray)", filter: "brightness(85%)" } },
         },
       },
       defaultProps: { variant: "primary", size: "md" },

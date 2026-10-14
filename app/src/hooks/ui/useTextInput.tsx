@@ -1,17 +1,18 @@
 import React, { useState } from "react"
-import TextInput from "../../components/ui/TextInput/TextInput"
+import TextInput, { TextInputType } from "../../components/ui/TextInput/TextInput"
 
 type UseTextInput = (
   label: string,
   placeholder: string,
-  validationRegex: RegExp
+  validationRegex: RegExp,
+  type?: TextInputType
 ) => {
   TextInput: React.JSX.Element
   value: string
   isInvalid: boolean
 }
 
-const useTextInput: UseTextInput = (label, placeholder, regex) => {
+const useTextInput: UseTextInput = (label, placeholder, regex, type = "text") => {
   const [value, setValue] = useState<string>("")
   const [isInvalid, setIsInvalid] = useState<boolean>(false)
 
@@ -29,6 +30,7 @@ const useTextInput: UseTextInput = (label, placeholder, regex) => {
       placeholder={placeholder}
       value={value}
       isInvalid={isInvalid}
+      type={type}
       handleChange={handleChange}
       handleFocusOut={handleFocusOut}
     />,
