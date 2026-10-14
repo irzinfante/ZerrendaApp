@@ -1,0 +1,45 @@
+{
+  "project": "zerrenda-app",
+  "description": "Aplicación para gestionar listas e inventarios. Backend en Rust (Axum + CouchDB) en api/ y frontend en React + TypeScript + Vite + Chakra UI en app/.",
+  "rules": {
+    "one_feature_at_a_time": true,
+    "require_verification_to_close": true,
+    "require_approved_spec_to_implement": true,
+    "valid_status": ["pending", "spec_ready", "in_progress", "done", "blocked"],
+    "sdd_required_when": "feature has \"sdd\": true"
+  },
+  "features": [
+    {
+      "id": 1,
+      "name": "api-auth",
+      "title": "Registro y login de usuario en api",
+      "description": "Registro y login con email y contraseña en el backend, con sesiones en CouchDB y rutas protegidas por token. Implementada antes de adoptar SDD.",
+      "acceptance": [
+        "`POST /auth/register` con `email` y `password` válidos crea el usuario y devuelve `data.session_token`",
+        "`POST /auth/register` con un email inválido, una contraseña inválida o un email ya registrado responde 400 `ValidationError`",
+        "`POST /auth/login` con credenciales correctas devuelve `data.session_token`",
+        "`POST /auth/login` con credenciales incorrectas responde 401 `AuthError` con el mismo mensaje exista o no el email",
+        "Las rutas protegidas (`POST /dummy`) responden 401 `AuthError` sin `Authorization: Bearer <token>` válido o con la sesión caducada"
+      ],
+      "status": "done"
+    },
+    {
+      "id": 2,
+      "name": "app-auth",
+      "title": "Registro y login de usuario en app",
+      "description": "Conectar la pantalla de login de la app (hoy simulada en App.tsx) con `POST /auth/register` y `POST /auth/login` de api, y mantener la sesión en la app.",
+      "acceptance": [
+        "La URL de api se configura con una variable `VITE_*` declarada en `vite-env.d.ts`, documentada en `app/.env.example` y expuesta desde `constants/Environment.ts`",
+        "`services/` contiene el cliente base con `fetch` y `authService.ts` con los tipos `ApiResponse<T>`, `RegisterRequest` / `RegisterResponse` y `LoginRequest` / `LoginResponse`",
+        "`hooks/useAuth.ts` es el único sitio donde se guarda el `session_token`, y el cliente base lo envía como `Authorization: Bearer <token>`",
+        "La pantalla permite introducir email y contraseña y, con credenciales correctas, iniciar sesión contra api (sin `Math.random()` ni respuestas simuladas)",
+        "La pantalla permite registrar un usuario nuevo contra api",
+        "Las credenciales incorrectas, los errores de validación y los fallos de red se muestran con un mensaje, sin detalles técnicos",
+        "Mientras una petición está en curso, el botón de envío está deshabilitado",
+        "Un `401` en una ruta protegida cierra la sesión y vuelve al login"
+      ],
+      "sdd": true,
+      "status": "pending"
+    }
+  ]
+}

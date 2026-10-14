@@ -13,21 +13,21 @@ services:
       - COUCHDB_PASSWORD=password
     network_mode: "host"
 
-  backend:
+  api:
     container_name: zerrenda-app-api
-    build: ./backend
+    build: ./api
     depends_on:
      - db
     restart: unless-stopped
     env_file:
-     - backend/.env
+     - api/.env
     environment:
      - DB_USER=admin
      - DB_PASSWORD=password
     network_mode: "host"
 
-  frontend:
+  app:
     container_name: zerrenda-app
-    build: ./frontend
+    build: ./app
     restart: unless-stopped
     network_mode: "host"
