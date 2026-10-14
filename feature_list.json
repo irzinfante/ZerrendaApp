@@ -42,7 +42,7 @@
         "Un `401` en una ruta protegida cierra la sesión y vuelve al login"
       ],
       "sdd": true,
-      "status": "pending"
+      "status": "done"
     }
   ]
 }

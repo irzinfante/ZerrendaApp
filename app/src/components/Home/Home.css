@@ -1,0 +1,30 @@
+#home-section {
+  margin-bottom: 20px;
+}
+
+#home-container {
+  text-align: center;
+  padding: 20px 40px 30px;
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+
+  & h5 {
+    margin: 0;
+  }
+
+  & .home-success {
+    color: var(--sage-green);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  & .home-error {
+    color: var(--terracotta-red);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+}
