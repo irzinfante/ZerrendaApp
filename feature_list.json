@@ -33,9 +33,12 @@
         "`services/` contiene el cliente base con `fetch` y `authService.ts` con los tipos `ApiResponse<T>`, `RegisterRequest` / `RegisterResponse` y `LoginRequest` / `LoginResponse`",
         "`hooks/useAuth.ts` es el único sitio donde se guarda el `session_token`, y el cliente base lo envía como `Authorization: Bearer <token>`",
         "La pantalla permite introducir email y contraseña y, con credenciales correctas, iniciar sesión contra api (sin `Math.random()` ni respuestas simuladas)",
+        "El botón de envío está deshabilitado si el email o la contraseña no son validos",
+        "El botón de envío destaca en un color más brillante al hacer hover cuando esta habilitado",
         "La pantalla permite registrar un usuario nuevo contra api",
         "Las credenciales incorrectas, los errores de validación y los fallos de red se muestran con un mensaje, sin detalles técnicos",
-        "Mientras una petición está en curso, el botón de envío está deshabilitado",
+        "Mientras una petición está en curso, el botón de envío está deshabilitado y se informa de que la petición está en curso con un elemento gráfico",
+        "Con un registro exitoso se muestra en pantalla el usuario registrado",
         "Un `401` en una ruta protegida cierra la sesión y vuelve al login"
       ],
       "sdd": true,
