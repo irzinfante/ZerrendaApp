@@ -150,15 +150,15 @@ rechaza si queda alguna `[ ]` sin justificación documentada.
 
 ## Trazabilidad (regla dura)
 
-- Cada comprobación (`V<n>`) de `verifications/<name>/auto.sh` debe poder
+- Cada comprobación (`V<n>`) de `verifications/<feature>/auto.sh` debe poder
   mapearse a un `R<n>` de su spec.
 - Cada `R<n>` debe tener al menos una `V<n>`: un `check` en
-  `verifications/<name>/auto.sh` o, en `app`, la cita `archivo:línea` del código
+  `verifications/<feature>/auto.sh` o, en `app`, la cita `archivo:línea` del código
   que lo hace verdadero (ver `docs/verification.md`).
 - El `reviewer` comprueba esta correspondencia explícitamente y rechaza si
   falta.
 
-El `implementer` documenta el mapa en `progress/<name>/impl.md`:
+El `implementer` documenta el mapa en `progress/<feature>/impl.md`:
 
 ```markdown
 ## Trazabilidad

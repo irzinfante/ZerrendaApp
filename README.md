@@ -17,7 +17,7 @@ está descrito en `docs/specs.md`.
 ### 1. Añadir la feature
 
 Cada feature es una entrada en `feature_list.json` con un `name` único
-(será el nombre de `specs/<name>/` y `progress/<name>/`), un `title`, una
+(será el nombre de `specs/<feature>/` y `progress/<feature>/`), un `title`, una
 `description`, la lista de criterios de `acceptance`, `"sdd": true` y
 `"status": "pending"`. El arnés trabaja siempre sobre la primera feature que
 no esté `done` ni `blocked`, una sola a la vez.

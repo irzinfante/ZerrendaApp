@@ -61,14 +61,14 @@ pending → [spec_author] → spec_ready → ⏸ HUMANO → in_progress → [imp
 
 1. El leader detecta la primera feature `pending` con `"sdd": true`.
 2. El leader lanza `spec_author`, que crea
-   `specs/<name>/{requirements,design,tasks}.md` y marca el status como
+   `specs/<feature>/{requirements,design,tasks}.md` y marca el status como
    `spec_ready`.
-3. **Pausa.** El humano lee el spec en `specs/<name>/` y aprueba (o pide cambios).
+3. **Pausa.** El humano lee el spec en `specs/<feature>/` y aprueba (o pide cambios).
 4. Una vez aprobado, el leader cambia el status a `in_progress` y lanza `implementer`.
 5. El implementer ejecuta `tasks.md` una a una, marcándolas `[x]`, y escribe
-   sus comprobaciones en `verifications/<name>/auto.sh`.
+   sus comprobaciones en `verifications/<feature>/auto.sh`.
 6. El reviewer verifica trazabilidad `R<n>` ↔ comprobación `V<n>` y tasks
-   completas; aprueba o rechaza en `progress/<name>/review.md`. Si rechaza,
+   completas; aprueba o rechaza en `progress/<feature>/review.md`. Si rechaza,
    el leader relanza al implementer con `review.md`, hasta 3 rondas;
    después, `blocked`.
 7. Si aprueba, el implementer cierra la feature (§5): la marca `done` y,
@@ -93,7 +93,7 @@ Antes de terminar:
    que falte. La entrada del historial se comprueba en el paso 6.
 6. **Último paso, solo si se ha terminado una feature:** añade al final de
    `progress/history.md` el resumen de lo implementado (a partir de
-   `progress/<name>/impl.md`). Es la única entrada de la feature en el
+   `progress/<feature>/impl.md`). Es la única entrada de la feature en el
    historial y lo último que se escribe: después no se toca nada más. Las
    sesiones que no terminan una feature (spec, `blocked`) no añaden nada.
 
@@ -101,6 +101,6 @@ Antes de terminar:
 
 - Relee la sección relevante de `docs/`.
 - Si la herramienta no hace lo que esperas, **no inventes un workaround**:
-  anota el motivo en el informe de la feature (`progress/<name>/`),
+  anota el motivo en el informe de la feature (`progress/<feature>/`),
   referéncialo desde `progress/current.md`, pon estado `blocked` y para la
   sesión.

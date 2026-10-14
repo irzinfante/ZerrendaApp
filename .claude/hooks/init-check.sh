@@ -17,6 +17,6 @@ if [ "$stop_hook_active" = "true" ]; then
   exit 0
 fi
 
-echo "[harness] $cmd FALLÓ — corrígelo antes de terminar. Si no está en tu mano, pon la feature en curso en blocked, con el motivo en su informe de progress/<name>/ referenciado desde progress/current.md:" >&2
+echo "[harness] $cmd FALLÓ — corrígelo antes de terminar. Si no está en tu mano, pon la feature en curso en blocked, con el motivo en su informe de progress/<feature>/ referenciado desde progress/current.md:" >&2
 echo "$output" | grep -A30 -F '[FAIL]' >&2
 exit 2

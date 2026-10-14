@@ -115,10 +115,10 @@ ruta que usa `services/` existe en `api/src/api/` y los campos de los tipos
 
 ### Nivel 4 — Trazabilidad de requirements (obligatorio para features con `"sdd": true`)
 
-Cada `R<n>` de `specs/<name>/requirements.md` debe poder mapearse a al menos
+Cada `R<n>` de `specs/<feature>/requirements.md` debe poder mapearse a al menos
 una `V<n>` de los niveles 2 o 3. El reviewer rechaza si falta cobertura.
 
-El implementer documenta el mapa en `progress/<name>/impl.md`:
+El implementer documenta el mapa en `progress/<feature>/impl.md`:
 
 ```markdown
 ## Trazabilidad
@@ -128,7 +128,7 @@ El implementer documenta el mapa en `progress/<name>/impl.md`:
 - R4 → V3: `POST /dummy` con el token cerrado → 401 `AuthError` (`verifications/auth-logout/auto.sh`)
 ```
 
-El reviewer vuelve a ejecutar `./init.sh` y, si existe, `verifications/<name>/auto.sh`, y
+El reviewer vuelve a ejecutar `./init.sh` y, si existe, `verifications/<feature>/auto.sh`, y
 relee el código citado en las `V<n>` de `app`.
 
 ## Pruebas manuales de `app` (documentadas, obligatorias si se toca `app`)

@@ -17,8 +17,8 @@
 
 - [ ] Como mucho una feature en `in_progress` en `feature_list.json`.
 - [ ] Toda feature `done` con `"sdd": true` tiene su mapa de trazabilidad en
-      `progress/<name>/impl.md`; si toca `api`, su `verifications/<name>/auto.sh`;
-      y si toca `app`, sus pruebas manuales en `verifications/<name>/manual.md`.
+      `progress/<feature>/impl.md`; si toca `api`, su `verifications/<feature>/auto.sh`;
+      y si toca `app`, sus pruebas manuales en `verifications/<feature>/manual.md`.
 - [ ] `progress/current.md` está vacío o describe la sesión activa
       (no contiene basura de sesiones anteriores).
 
@@ -35,7 +35,7 @@
 
 - [ ] `./init.sh` pasa compilación, formato, lint y reglas de arquitectura
       de `app`.
-- [ ] Si existe, `verifications/<name>/auto.sh` termina con exit code 0: todas las
+- [ ] Si existe, `verifications/<feature>/auto.sh` termina con exit code 0: todas las
       comprobaciones en `[OK]`.
 - [ ] Las comprobaciones de `api` usan la API real sobre la CouchDB
       desechable de `start_env` (`verifications/lib.sh`), sin respuestas
@@ -55,7 +55,7 @@
 ## C6 — Spec Driven Development
 
 - [ ] Toda feature con `"sdd": true` en estado `spec_ready`, `in_progress`
-      o `done` tiene su carpeta `specs/<name>/` con los 3 archivos:
+      o `done` tiene su carpeta `specs/<feature>/` con los 3 archivos:
       `requirements.md`, `design.md`, `tasks.md`.
 - [ ] `requirements.md` usa EARS estricto (ver `docs/specs.md`).
 - [ ] Toda feature `done` con `"sdd": true` tiene todas sus tasks marcadas

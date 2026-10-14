@@ -37,16 +37,16 @@ Mira el status de la primera feature no-`done` / no-`blocked` en
 
 1. Lanza **1 subagente `spec_author`**.
 2. El `spec_author` redacta
-   `specs/<name>/{requirements.md, design.md, tasks.md}` y cambia el status
+   `specs/<feature>/{requirements.md, design.md, tasks.md}` y cambia el status
    a `spec_ready`.
 3. **PARAS**. No lanzas implementer. Tu mensaje al humano:
-   > "Spec listo en `specs/<name>/`. Revísalo y di **'aprobado'** para
+   > "Spec listo en `specs/<feature>/`. Revísalo y di **'aprobado'** para
    > continuar con la implementación, o pídeme cambios."
 
 ### Caso B — status == `spec_ready` Y el humano acaba de aprobar
 
 1. Cambia el status a `in_progress` en `feature_list.json`.
-2. Lanza **1 subagente `implementer`** pasándole la ruta `specs/<name>/`
+2. Lanza **1 subagente `implementer`** pasándole la ruta `specs/<feature>/`
    como input. El `implementer` trabaja a partir del spec, no del
    `acceptance` original.
 3. Cuando termine → lanza **1 `reviewer`** que verifica trazabilidad
@@ -57,9 +57,9 @@ Mira el status de la primera feature no-`done` / no-`blocked` en
      §5. Su último paso es el resumen en `progress/history.md`: después no
      escribes nada más, ni siquiera en `progress/`.
    - `CHANGES_REQUESTED` → relanza al `implementer` pasándole
-     `progress/<name>/review.md` como input y vuelve al paso 3.
+     `progress/<feature>/review.md` como input y vuelve al paso 3.
      Máximo 3 rondas de revisión. Si a la tercera sigue sin aprobarse,
-     pon la feature en `blocked`, referencia `progress/<name>/review.md`
+     pon la feature en `blocked`, referencia `progress/<feature>/review.md`
      desde `progress/current.md` y para.
 
 ### Caso C — status == `spec_ready` SIN aprobación humana
@@ -75,8 +75,8 @@ abortas.
 
 Cuando lances subagentes, instrúyeles para que **escriban sus resultados
 en archivos** (no en su respuesta de texto). Tú solo recibes referencias
-del tipo: "resultado en `progress/<name>/impl.md`" o
-"`spec_ready -> specs/<name>/`".
+del tipo: "resultado en `progress/<feature>/impl.md`" o
+"`spec_ready -> specs/<feature>/`".
 
 > **En este repo en práctica:** tras una sesión real los informes quedan en
 > `progress/<feature>/impl.md` (implementer) y
