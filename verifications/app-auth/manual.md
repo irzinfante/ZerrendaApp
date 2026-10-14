@@ -24,7 +24,10 @@ Cubre: R14, R15
 **Esperado:** se ven el título "Log in to continue", los campos "Email" y
 "Password" y los botones "Log in" (azul) y "Sign up" (verde). En "Password"
 los caracteres se ven como puntos, no como texto.
-**Resultado:** _pendiente_
+
+**Resultado:** OK
+
+> Nota: Si no se rellena el campo email con un email valido los botones están deshabilitados (comportamiento esperado)
 
 ## P2 — Email o contraseña no válidos deshabilitan los botones
 
@@ -38,7 +41,8 @@ Cubre: R21, R22
 **Esperado:** en 1, 2 y 3 "Log in" y "Sign up" están grises y no responden al
 pulsarlos; en 2 el campo "Email" se marca en rojo y en 3 el campo "Password".
 En 4 los dos botones se habilitan (azul y verde).
-**Resultado:** _pendiente_
+
+**Resultado:** OK
 
 ## P3 — Hover de los botones
 
@@ -51,7 +55,8 @@ Cubre: R23, R24
 **Esperado:** en 1 cada botón se ve más claro (más brillante) mientras el
 puntero está encima. En 2 los botones siguen grises, con el cursor de
 "no permitido", y su aspecto no cambia al pasar el puntero.
-**Resultado:** _pendiente_
+
+**Resultado:** OK
 
 ## P4 — Registro de un usuario nuevo
 
@@ -66,7 +71,8 @@ Cubre: R1, R2, R3, R4, R5, R6, R7, R9, R10, R11, R18, R25, R26, R27, R33, R34
 spinner en lugar del texto y los dos botones están deshabilitados. Después
 desaparece el formulario de login y se ve "Signed up as `<email>`" y el botón
 "Check session".
-**Resultado:** _pendiente_
+
+**Resultado:** OK
 
 ## P5 — Registro con un email ya registrado
 
@@ -79,7 +85,8 @@ Cubre: R29, R32
 **Esperado:** se queda en la pantalla de login con el mensaje rojo
 "Could not sign up with this email and password", sin otro texto técnico.
 Al cambiar el email o la contraseña, el mensaje desaparece.
-**Resultado:** _pendiente_
+
+**Resultado:** OK
 
 ## P6 — Login correcto e incorrecto
 
@@ -94,7 +101,8 @@ Cubre: R8, R16, R17, R18, R19, R28, R32, R33, R34
 nada más. En 2, mientras la petición está en curso, "Log in" muestra un
 spinner y los dos botones están deshabilitados; después se ve
 "Logged in as `<email>`" y el botón "Check session".
-**Resultado:** _pendiente_
+
+**Resultado:** OK
 
 ## P7 — Sin conexión con api
 
@@ -107,7 +115,8 @@ Cubre: R1, R2, R3, R5, R30, R32
 **Esperado:** en ambos casos aparece el mensaje rojo
 "Could not connect to the server", sin textos de excepciones
 (como "Failed to fetch"). Vuelve a arrancar `api` con `cargo run`.
-**Resultado:** _pendiente_
+
+**Resultado:** OK
 
 ## P8 — Error inesperado del servidor
 
@@ -121,7 +130,8 @@ Cubre: R31, R32
 **Esperado:** en 2 y 3 aparece el mensaje rojo
 "Something went wrong, try again later", sin textos de `api` (como
 "Internal server error") ni de excepciones.
-**Resultado:** _pendiente_
+
+**Resultado:** OK
 
 ## P9 — Comprobar la sesión
 
@@ -134,7 +144,8 @@ Cubre: R13, R38, R39, R40, R41, R42
 **Esperado:** mientras la petición está en curso, "Check session" muestra un
 spinner y está deshabilitado. Después aparece en verde "Session is active" y
 la pantalla sigue mostrando "Logged in as `<email>`".
-**Resultado:** _pendiente_
+
+**Resultado:** OK
 
 ## P10 — Comprobar la sesión con errores
 
@@ -148,7 +159,8 @@ Cubre: R43, R44
 **Esperado:** en 1 aparece en rojo "Could not connect to the server"; en 2,
 "Something went wrong, try again later". En ningún caso se cierra la sesión:
 sigue la pantalla "Logged in as `<email>`".
-**Resultado:** _pendiente_
+
+**Resultado:** OK
 
 ## P11 — Sesión caducada (401 en una ruta protegida)
 
@@ -163,7 +175,8 @@ Cubre: R12, R35, R36, R37
 **Esperado:** en 2 vuelve la pantalla de login con el mensaje rojo
 "Your session has expired, log in again". En 3 la app sigue en la pantalla
 de login: la sesión no se ha guardado en el navegador.
-**Resultado:** _pendiente_
+
+**Resultado:** OK
 
 ## P12 — Ninguna respuesta es aleatoria
 
@@ -175,4 +188,5 @@ Cubre: R20
 
 **Esperado:** en 1 las cinco veces aparece "Incorrect email or password"; en
 2 las tres veces se abre la sesión con "Logged in as `<email>`".
-**Resultado:** _pendiente_
+
+**Resultado:** OK
