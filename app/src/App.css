@@ -8,14 +8,14 @@
   width: 100vw;
 }
 
-#logo-container {
+#app-logo-container {
   height: 33vh;
   display:flex;
   align-items: center;
   justify-content: center;
 }
 
-#logo {
+#app-logo {
   font-family: "Carter One", cursive;
   font-size: 2.5rem;
   letter-spacing: 4pt;
@@ -61,19 +61,19 @@
 }
 
 @media (min-width: 601px) {
-  #logo {
+  #app-logo {
     font-size: 3rem;
   }
 }
 
 @media (min-width: 769px) {
-  #logo {
+  #app-logo {
     font-size: 5rem;
   }
 }
 
 @media (min-width: 1200px) {
-  #logo {
+  #app-logo {
     font-size: 7rem;
   }
 }

@@ -1,5 +1,4 @@
-use couch_rs::CouchDocument;
-use couch_rs::document::TypedCouchDocument;
+use couch_rs::{CouchDocument, document::TypedCouchDocument};
 use serde::{Deserialize, Serialize};
 
 /// Links a unique identity (e.g. an email) to a user. The identity is the

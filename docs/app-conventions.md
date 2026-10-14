@@ -49,7 +49,7 @@
 | Envoltorio de Chakra       | alias `ChakraUi<Nombre>`      | `ChakraUiButton`            |
 | Variables de entorno       | `UPPER_SNAKE` sin `VITE_`     | `GITHUB_TAG`                |
 | Patrones de validación     | `<campo>Pattern`              | `emailPattern`              |
-| Clases e ids CSS           | `kebab-case`, prefijo del componente | `footer-content`     |
+| Clases e ids CSS           | `kebab-case`, prefijo del componente (salvo las clases globales de `index.css`) | `footer-content` |
 | Variables CSS              | `--<color>` en `kebab-case`   | `--striped-blue`            |
 | Tipos del contrato con `api` | `<Acción>Request` / `<Acción>Response`, campos en `snake_case` | `LoginResponse` |
 

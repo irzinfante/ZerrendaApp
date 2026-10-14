@@ -10,7 +10,7 @@ interface TextInputProps {
 }
 
 const TextInput = ({ label, placeholder, value, isInvalid, handleChange, handleFocusOut }: TextInputProps) => (
-  <FormControl isInvalid={isInvalid} >
+  <FormControl isInvalid={isInvalid}>
     <FormLabel>{label}</FormLabel>
     <Input
       placeholder={placeholder}

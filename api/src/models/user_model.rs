@@ -1,5 +1,4 @@
-use couch_rs::CouchDocument;
-use couch_rs::document::TypedCouchDocument;
+use couch_rs::{CouchDocument, document::TypedCouchDocument};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, CouchDocument, Clone)]
@@ -26,10 +25,6 @@ impl User {
 
     pub fn get_id(&self) -> String {
         self._id.clone()
-    }
-
-    pub fn get_email(&self) -> String {
-        self.email.clone()
     }
 
     pub fn get_password_hash(&self) -> String {

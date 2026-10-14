@@ -7,14 +7,13 @@ import Footer from "./components/Footer/Footer"
 import "./App.css"
 
 const App = () => {
-
   const [isLoginSuccess, setIsLoginSuccess] = useState<boolean>(false)
   const [isLoginError, setIsLoginError] = useState<boolean>(false)
 
   const login = () => {
     setIsLoginSuccess(false)
     setIsLoginError(false)
-    if(Math.random() < 0.5) {
+    if (Math.random() < 0.5) {
       setIsLoginSuccess(true)
     } else {
       setIsLoginError(true)
@@ -31,8 +30,8 @@ const App = () => {
 
   return (
     <div id="app-container">
-      <div id="logo-container">
-        <h1 id="logo">Zerrenda<span className="charcoal-gray">App</span></h1>
+      <div id="app-logo-container">
+        <h1 id="app-logo">Zerrenda<span className="charcoal-gray">App</span></h1>
       </div>
       <section id="login-section">
         <Container id="login-container">
@@ -43,7 +42,7 @@ const App = () => {
           {isLoginError && <span className="login-error">Login attempt failed</span>}
         </Container>
       </section>
-      <Footer/>
+      <Footer />
     </div>
   )
 }

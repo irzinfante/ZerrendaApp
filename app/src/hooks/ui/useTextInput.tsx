@@ -19,7 +19,9 @@ const useTextInput: UseTextInput = (label, placeholder, regex) => {
     setValue(event.target.value)
     setIsInvalid(!regex.test(event.target.value.toLowerCase()))
   }
-  const handleFocusOut = (event: React.FocusEvent<HTMLInputElement>) => {setIsInvalid(!regex.test(event.target.value.toLowerCase()))}
+  const handleFocusOut = (event: React.FocusEvent<HTMLInputElement>) => {
+    setIsInvalid(!regex.test(event.target.value.toLowerCase()))
+  }
 
   return {
     TextInput: <TextInput

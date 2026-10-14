@@ -6,7 +6,7 @@ interface ButtonProps {
   handleClick: React.MouseEventHandler<HTMLButtonElement>
 }
 
-const Button = ({text, isDisabled, handleClick }: ButtonProps) => (
+const Button = ({ text, isDisabled, handleClick }: ButtonProps) => (
   <ChakraUiButton
     isDisabled={isDisabled}
     onClick={handleClick}

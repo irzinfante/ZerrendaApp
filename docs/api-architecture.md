@@ -58,8 +58,9 @@
    compararlos.
 
 9. **Configuración por entorno.** Las variables de entorno se leen solo en
-    `config.rs` y se documentan en `.env.example`; los valores llegan al resto
-    de módulos por parámetro desde `main.rs`.
+    `config.rs`, se documentan en `.env.example` y tienen su valor local en
+    `init.sh` (con el que crea `api/.env` si no existe); los valores llegan al
+    resto de módulos por parámetro desde `main.rs`.
 
 10. **CORS mínimo.** Solo los orígenes configurados y los métodos y cabeceras
     que la API usa; quien introduce uno nuevo amplía la capa en el mismo

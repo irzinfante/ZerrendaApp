@@ -1,13 +1,16 @@
 const EMAIL_MAX_LEN: usize = 254;
+const EMAIL_LOCAL_MIN_LEN: usize = 2;
 const EMAIL_LOCAL_MAX_LEN: usize = 64;
 const EMAIL_LABEL_MAX_LEN: usize = 63;
-const EMAIL_LOCAL_SPECIAL_CHARS: &str = "!#$%&'*+/=?^_`{|}~.-";
+const EMAIL_LOCAL_SPECIAL_CHARS: &str = ".-_+";
 
 pub const PASSWORD_MIN_CHARS: usize = 8;
 // bcrypt only uses the first 72 bytes of the password.
 pub const PASSWORD_MAX_BYTES: usize = 72;
 
-/// Trims and lowercases the email and checks its format.
+/// Trims and lowercases the email and checks its format. The format is never
+/// looser than `emailPattern` in the app, so the app doesn't block an email
+/// that the API would accept.
 /// Returns `None` if the email is not valid.
 pub fn normalize_email(email: &str) -> Option<String> {
     let email = email.trim().to_lowercase();
@@ -24,10 +27,10 @@ pub fn normalize_email(email: &str) -> Option<String> {
 }
 
 fn is_valid_email_local(local: &str) -> bool {
-    !local.is_empty()
+    local.len() >= EMAIL_LOCAL_MIN_LEN
         && local.len() <= EMAIL_LOCAL_MAX_LEN
-        && !local.starts_with('.')
-        && !local.ends_with('.')
+        && local.starts_with(|c: char| c.is_ascii_alphanumeric())
+        && local.ends_with(|c: char| c.is_ascii_alphanumeric())
         && !local.contains("..")
         && local
             .chars()
@@ -41,6 +44,7 @@ fn is_valid_email_domain(domain: &str) -> bool {
             && label.len() <= EMAIL_LABEL_MAX_LEN
             && !label.starts_with('-')
             && !label.ends_with('-')
+            && !label.contains("--")
             && label.chars().all(|c| c.is_ascii_alphanumeric() || c == '-')
     };
     let is_valid_tld = |tld: &&str| tld.len() >= 2 && tld.chars().all(|c| c.is_ascii_alphabetic());

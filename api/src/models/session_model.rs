@@ -3,8 +3,7 @@ use crate::{
     helpers::util::new_id,
 };
 use chrono::{DateTime, Days, Utc};
-use couch_rs::CouchDocument;
-use couch_rs::document::TypedCouchDocument;
+use couch_rs::{CouchDocument, document::TypedCouchDocument};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, CouchDocument, Clone)]
