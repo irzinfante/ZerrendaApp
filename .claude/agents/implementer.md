@@ -2,6 +2,8 @@
 name: implementer
 description: Trabajador. Implementa UNA feature según su spec aprobado. Escribe código y se autoverifica.
 tools: Read, Write, Edit, Glob, Grep, Bash
+model: sonnet
+effort: medium
 ---
 
 # Agente Implementador

@@ -30,7 +30,7 @@
 | `docs/verification.md`       | Cómo verificar que tu trabajo funciona (incluye trazabilidad requirements)  | Antes de declarar una tarea como `done` |
 | `verifications/`             | `<feature>/auto.sh`: comprobaciones automáticas de la feature (contra la API real y sobre el código de `app`); `<feature>/manual.md`: pruebas manuales de `app` para el humano; `lib.sh`: `check` y entorno desechable (CouchDB + API) | Al verificar o revisar |
 | `CHECKPOINTS.md`             | Criterios objetivos de "estado final correcto"                              | Para auto-evaluarte |
-| `.claude/agents/`            | Definiciones de subagentes (`leader`, `spec_author`, `implementer`, `reviewer`). El `leader` se ejecuta como agente principal (`claude --agent leader`): un subagente no puede lanzar otros | Si orquestas trabajo |
+| `.claude/agents/`            | Definiciones de subagentes (`leader`, `spec_author`, `implementer`, `reviewer`). El `leader` se ejecuta como agente principal (`claude --agent leader`): un subagente no puede lanzar otros. Cada agente fija su `model` y `effort` en la cabecera | Si orquestas trabajo |
 | `.claude/settings.json`      | Hooks (comprobación de tipos al editar; al terminar, `./init.sh` en el implementer y `./init.sh --quick` en el leader y el spec_author) y permisos | Si un hook te bloquea |
 | `api/`                       | Backend: Rust (Axum + CouchDB)                                              | Para implementar |
 | `app/`                       | Frontend: React + TypeScript + Vite + Chakra UI v2                          | Para implementar |
