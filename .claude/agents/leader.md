@@ -2,6 +2,8 @@
 name: leader
 description: Orquestador. Recibe la tarea principal, divide el trabajo y lanza subagentes. NUNCA escribe código directamente.
 tools: Read, Edit, Glob, Grep, Bash, Agent
+model: sonnet
+effort: low
 ---
 
 # Agente Líder (Orquestador)
@@ -103,3 +105,5 @@ del tipo: "resultado en `progress/<feature>/impl.md`" o
 - ❌ Saltar la puerta de aprobación humana entre `spec_ready` e `in_progress`.
 - ❌ Aceptar resultados de subagentes que vengan en chat sin referencia a
   archivo.
+- ❌ Pasar `model` al lanzar subagentes: cada uno usa el `model` y el
+  `effort` de su cabecera en `.claude/agents/`.
